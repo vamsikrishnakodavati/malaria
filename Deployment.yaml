@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: malaria-app-deployment
+  labels:
+    app: malaria-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: malaria-app-pod
+      app: malaria-app
+  template:
+    metadata:
+      name: malaria-app-pod
+      labels:
+        name: malaria-app-pod
+        app: malaria-app
+
+    spec:
+      containers:
+      - name: voting-app
+        image: vk1025/myapp:malaria_app_3
+        ports:
+        - containerPort: 5000
